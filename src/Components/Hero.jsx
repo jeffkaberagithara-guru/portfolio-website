@@ -148,7 +148,7 @@ function Hero() {
                     >
                         <div className="relative">
                             {/* Main Image Container - Smaller */}
-                            <div className="relative z-10 w-56 h-56 md:w-84 md:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
+                            <div className="relative z-10 w-56 h-75 md:w-84 md:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
                                 <img 
                                     src="/4.JPG" 
                                     alt="Jeff Kabera - Full Stack Developer" 
