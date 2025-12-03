@@ -132,14 +132,14 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Animated Mobile Menu Button */}
-          <motion.button
-            className="md:hidden text-white p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileHover={{ scale: 1.1, rotate: isMobileMenuOpen ? 0 : 90 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
+            {/* Animated Mobile Menu Button */}
+            <motion.button
+              className="md:hidden text-white p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden top-6 right-6 z-50"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileHover={{ scale: 1.1, rotate: isMobileMenuOpen ? 0 : 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
             {/* Button Glow Effect */}
             <motion.div 
               className="absolute inset-0 bg-orange-500/20 rounded-xl scale-0 group-hover:scale-100"
