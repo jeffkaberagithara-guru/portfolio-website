@@ -90,8 +90,8 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-16 md:py-20 px-4 bg-linear-to-br from-black via-gray-900 to-orange-900">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-20 px-4 overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
