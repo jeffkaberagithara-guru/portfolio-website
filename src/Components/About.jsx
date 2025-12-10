@@ -45,7 +45,7 @@ function About() {
                     </motion.div>
                     
                     <motion.h1 
-                        className="text-5xl md:text-6xl font-black text-white mb-6"
+                        className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
@@ -55,7 +55,7 @@ function About() {
                     </motion.h1>
                     
                     <motion.p 
-                        className="text-xl text-gray-300 max-w-2xl mx-auto"
+                        className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
@@ -82,7 +82,7 @@ function About() {
                             transition={{ duration: 0.3 }}
                         >
                             <div className="relative">
-                                <div className="relative z-10 w-80 h-105 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
+                                <div className="relative z-10 w-64 h-80 md:w-80 md:h-96 lg:w-96 lg:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
                                     <img 
                                         src="/2.JPG" 
                                         alt="Jeff Kabera - Full Stack Developer" 
@@ -92,7 +92,7 @@ function About() {
                                 
                                 {/* Floating Elements */}
                                 <motion.div 
-                                    className="absolute -top-4 -left-4 w-20 h-20 bg-orange-500/20 rounded-full blur-xl"
+                                    className="absolute -top-4 -left-4 w-16 h-16 md:w-20 md:h-20 bg-orange-500/20 rounded-full blur-xl"
                                     animate={{ 
                                         scale: [1, 1.2, 1],
                                         opacity: [0.3, 0.6, 0.3]
@@ -105,7 +105,7 @@ function About() {
                                 />
                                 
                                 <motion.div 
-                                    className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-400/30 rounded-full blur-lg"
+                                    className="absolute -bottom-4 -right-4 w-12 h-12 md:w-16 md:h-16 bg-orange-400/30 rounded-full blur-lg"
                                     animate={{ 
                                         scale: [1.2, 1, 1.2],
                                         opacity: [0.4, 0.7, 0.4]
@@ -122,7 +122,7 @@ function About() {
 
                         {/* Stats */}
                         <motion.div 
-                            className="grid grid-cols-3 gap-6 w-full max-w-md"
+                            className="grid grid-cols-3 gap-4 w-full max-w-md"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
@@ -131,12 +131,12 @@ function About() {
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="text-center p-4 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100"
+                                    className="text-center p-3 md:p-4 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100"
                                     whileHover={{ scale: 1.05, y: -5 }}
                                 >
-                                    <stat.icon className="text-orange-500 text-2xl mx-auto mb-2" />
-                                    <div className="text-2xl font-bold text-white">{stat.number}</div>
-                                    <div className="text-sm text-gray-400">{stat.label}</div>
+                                    <stat.icon className="text-orange-500 text-xl md:text-2xl mx-auto mb-2" />
+                                    <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
+                                    <div className="text-xs md:text-sm text-gray-400">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -144,7 +144,7 @@ function About() {
 
                     {/* Right Column - Content */}
                     <motion.div
-                        className="text-center lg:text-left"
+                        className="text-center lg:text-left px-4 md:px-0"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
@@ -157,17 +157,17 @@ function About() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6">
                                 Hello! I'm <span className="text-orange-400">Jeff Kabera</span>
                             </h2>
                             
-                            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                            <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6 leading-relaxed">
                                 A passionate <span className="text-orange-400 font-medium">Full-Stack Developer</span> and <span className="text-orange-400 font-medium">UI/UX Designer</span> based in Nairobi, Kenya. 
                                 I specialize in creating digital experiences that are not only visually stunning but also 
                                 highly functional and user-centered.
                             </p>
                             
-                            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                            <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 leading-relaxed">
                                 With expertise spanning both frontend and backend technologies, I bridge the gap between 
                                 design and development. I believe in writing clean, efficient code and creating interfaces 
                                 that users love to interact with.
@@ -176,13 +176,13 @@ function About() {
 
                         {/* Skills Progress */}
                         <motion.div
-                            className="mb-8"
+                            className="mb-6 md:mb-8"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-2xl font-bold text-white mb-6">My Expertise</h3>
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">My Expertise</h3>
                             <div className="space-y-4">
                                 {skills.map((skill, index) => (
                                     <motion.div
@@ -193,8 +193,8 @@ function About() {
                                         transition={{ duration: 0.6, delay: index * 0.1 }}
                                         viewport={{ once: true }}
                                     >
-                                        <span className="text-gray-300 font-medium flex-1 text-left">{skill.name}</span>
-                                        <div className="w-24 bg-gray-700 rounded-full h-2 ml-4">
+                                        <span className="text-gray-300 font-medium flex-1 text-left text-sm md:text-base">{skill.name}</span>
+                                        <div className="w-20 md:w-24 bg-gray-700 rounded-full h-2 ml-4">
                                             <motion.div
                                                 className="h-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600"
                                                 initial={{ width: 0 }}
@@ -218,7 +218,7 @@ function About() {
                         >
                             <motion.button 
                                 onClick={() => scrollToSection('#contact')}
-                                className="group bg-linear-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-full cursor-pointer font-semibold flex items-center gap-3 justify-center hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-100 mx-auto lg:mx-0"
+                                className="group bg-linear-to-r from-orange-600 to-orange-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full cursor-pointer font-semibold flex items-center gap-3 justify-center hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-100 mx-auto lg:mx-0 text-sm md:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -231,7 +231,7 @@ function About() {
 
                 {/* Additional Info */}
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 px-4 md:px-0"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
@@ -244,12 +244,12 @@ function About() {
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            className="text-center p-6 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100 group"
+                            className="text-center p-4 md:p-6 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100 group"
                             whileHover={{ scale: 1.05, y: -5 }}
                         >
-                            <item.icon className="text-orange-500 text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform duration-100" />
-                            <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                            <p className="text-gray-400">{item.desc}</p>
+                            <item.icon className="text-orange-500 text-2xl md:text-3xl mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-100" />
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">{item.title}</h4>
+                            <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
                         </motion.div>
                     ))}
                 </motion.div>
