@@ -183,32 +183,6 @@ function Hero() {
                         </motion.div>
                     </div>
                 </div>
-
-                {/* Scroll Indicator */}
-                <motion.div 
-                    className="absolute bottom-2 left-1/2 lg:left-1/2 transform -translate-x-1/2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 1.5 }}
-                >
-                    <motion.div
-                        animate={{ y: [0, 6, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="flex flex-col items-center text-gray-400 hover:text-orange-300 transition-colors duration-100 cursor-pointer group"
-                        onClick={() => scrollToSection('#about')}
-                    >
-                        <span className="text-xs mb-1 font-medium group-hover:scale-105 transition-transform duration-100">
-                            Scroll
-                        </span>
-                        <div className="w-4 h-6 border border-orange-500/40 rounded-full flex justify-center group-hover:border-orange-400 transition-colors duration-100 relative">
-                            <motion.div
-                                animate={{ y: [0, 4, 0] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="w-1 h-1.5 bg-orange-500 rounded-full mt-1 group-hover:bg-orange-400 transition-colors duration-100"
-                            />
-                        </div>
-                    </motion.div>
-                </motion.div>
             </div>
         </section>
     );
