@@ -11,8 +11,8 @@ function Hero() {
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center px-4 py-8 sm:py-12 md:py-16 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-x-hidden w-full">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 md:pt-16 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-hidden w-full">
+            <div className="max-w-6xl mx-auto w-full px-4">
                 
                 {/* Text Content */}
                 <motion.div 
