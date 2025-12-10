@@ -111,11 +111,9 @@ function Hero() {
                     >
                         <span className="text-gray-500 text-sm font-medium self-center hidden sm:block">Follow me:</span>
                         {[
-                            { icon: FaGithub, href: "https://github.com/yourusername", color: "hover:text-orange-400", label: "GitHub" },
-                            { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", color: "hover:text-orange-500", label: "LinkedIn" },
-                            { icon: FaTwitter, href: "https://twitter.com/yourusername", color: "hover:text-orange-300", label: "Twitter" },
-                            { icon: FaInstagram, href: "https://instagram.com/yourusername", color: "hover:text-orange-600", label: "Instagram" },
-                            { icon: FaFacebook, href: "https://facebook.com/yourusername", color: "hover:text-orange-400", label: "Facebook" }
+                            { icon: FaGithub, href: "https://github.com/jeffkaberagithara-guru", color: "hover:text-orange-400", label: "GitHub" },
+                            { icon: FaLinkedin, href: "https://linkedin.com/in/kabera-githara-21067839b", color: "hover:text-orange-500", label: "LinkedIn" },
+                            { icon: FaTwitter, href: "https://twitter.com/JeffKaberaDev", color: "hover:text-orange-300", label: "Twitter" },
                         ].map((social, index) => (
                             <motion.a
                                 key={index}
