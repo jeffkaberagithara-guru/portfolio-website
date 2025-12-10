@@ -43,11 +43,11 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between items-center py-3 md:py-4">
           {/* Animated Logo */}
           <motion.div
-            className="flex items-center space-x-3 cursor-pointer group"
+            className="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('#home')}
@@ -57,8 +57,8 @@ const Navigation = () => {
               whileHover={{ rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-10 h-10 bg-linear-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/30 transition-all duration-100">
-                <span className="text-white font-bold text-lg">K</span>
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-linear-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/30 transition-all duration-100">
+                <span className="text-white font-bold text-sm md:text-lg">K</span>
               </div>
               {/* Pulsing Glow Effect */}
               <motion.div 
@@ -70,7 +70,7 @@ const Navigation = () => {
             
             <div className="flex flex-col">
               <motion.span 
-                className="text-2xl font-black bg-linear-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent group-hover:from-orange-300 group-hover:to-orange-400 transition-all duration-100"
+                className="text-xl md:text-2xl font-black bg-linear-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent group-hover:from-orange-300 group-hover:to-orange-400 transition-all duration-100"
                 whileHover={{ x: 2 }}
               >
                 Kabera
@@ -85,7 +85,7 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Menu with Elegant Animations */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -134,7 +134,7 @@ const Navigation = () => {
 
           {/* Animated Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-white p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden"
+            className="md:hidden text-white p-2 md:p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileHover={{ scale: 1.1, rotate: isMobileMenuOpen ? 0 : 90 }}
             whileTap={{ scale: 0.9 }}
@@ -151,14 +151,14 @@ const Navigation = () => {
                 animate={{ rotate: 0, opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <FiX size={22} />
+                <FiX size={20} />
               </motion.div> : 
               <motion.div
                 initial={{ rotate: 90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <FiMenu size={22} />
+                <FiMenu size={20} />
               </motion.div>
             }
           </motion.button>
@@ -173,7 +173,7 @@ const Navigation = () => {
           } transition-all duration-500 ease-out`}
         >
           <motion.div 
-            className="py-4 space-y-3 border-t border-orange-500/30 bg-black/90 backdrop-blur-xl rounded-b-2xl"
+            className="py-3 md:py-4 space-y-2 md:space-y-3 border-t border-orange-500/30 bg-black/90 backdrop-blur-xl rounded-b-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -182,7 +182,7 @@ const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="w-full text-left text-gray-300 hover:text-white py-3 px-6 rounded-xl hover:bg-orange-500/10 transition-all duration-100 flex items-center cursor-pointer group relative overflow-hidden"
+                className="w-full text-left text-gray-300 hover:text-white py-2.5 md:py-3 px-4 md:px-6 rounded-xl hover:bg-orange-500/10 transition-all duration-100 flex items-center cursor-pointer group relative overflow-hidden"
                 whileHover={{ x: 8, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -204,12 +204,12 @@ const Navigation = () => {
                 
                 {/* Animated Arrow Indicator */}
                 <motion.div
-                  className="relative z-10 w-5 h-5 opacity-0 group-hover:opacity-100"
+                  className="relative z-10 w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100"
                   whileHover={{ x: 3 }}
                   transition={{ duration: 0.3 }}
                 >
                   <motion.div
-                    className="w-2 h-2 border-r-2 border-t-2 border-orange-400 rotate-45 transform"
+                    className="w-1.5 h-1.5 md:w-2 md:h-2 border-r-2 border-t-2 border-orange-400 rotate-45 transform"
                     animate={{ x: [0, 2, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   />
@@ -217,7 +217,7 @@ const Navigation = () => {
                 
                 {/* Active Line Indicator */}
                 <motion.div
-                  className="absolute left-0 top-1/2 w-1 h-6 bg-linear-to-b from-orange-400 to-orange-500 rounded-r-full transform -translate-y-1/2 opacity-0 group-hover:opacity-100"
+                  className="absolute left-0 top-1/2 w-1 h-4 md:h-6 bg-linear-to-b from-orange-400 to-orange-500 rounded-r-full transform -translate-y-1/2 opacity-0 group-hover:opacity-100"
                   whileHover={{ scaleY: 1.2 }}
                   transition={{ duration: 0.2 }}
                 />
