@@ -12,7 +12,7 @@ function Hero() {
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 md:pt-16 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-x-hidden w-full">
-            <div className="max-w-6xl mx-auto w-full px-4">
+            <div className="max-w-6xl mx-auto w-full px-4 relative">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-center">
                     
                     {/* Text Content */}
@@ -144,7 +144,7 @@ function Hero() {
                         >
                             <div className="relative">
                                 {/* Main Image Container */}
-                                <div className="relative z-10 w-64 h-85 md:w-80 md:h-105 lg:w-84 lg:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto lg:mx-0">
+                                <div className="relative z-10 w-64 h-85 md:w-72 md:h-96 lg:w-80 lg:h-104 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto lg:mx-0">
                                     <img 
                                         src="/4.JPG" 
                                         alt="Jeff Kabera - Full Stack Developer" 
@@ -183,6 +183,32 @@ function Hero() {
                         </motion.div>
                     </div>
                 </div>
+
+                {/* Scroll Indicator at the bottom - KEPT THIS */}
+                <motion.div 
+                    className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 1.5 }}
+                >
+                    <motion.div
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="flex flex-col items-center text-gray-400 hover:text-orange-300 transition-colors duration-100 cursor-pointer group"
+                        onClick={() => scrollToSection('#about')}
+                    >
+                        <span className="text-xs mb-1 font-medium group-hover:scale-105 transition-transform duration-100">
+                            Scroll
+                        </span>
+                        <div className="w-4 h-6 border border-orange-500/40 rounded-full flex justify-center group-hover:border-orange-400 transition-colors duration-100 relative">
+                            <motion.div
+                                animate={{ y: [0, 4, 0] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="w-1 h-1.5 bg-orange-500 rounded-full mt-1 group-hover:bg-orange-400 transition-colors duration-100"
+                            />
+                        </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
