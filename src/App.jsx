@@ -10,7 +10,7 @@ import Footer from './Layout/Footer'
 function App() {
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-black via-gray-900 to-orange-900">
+    <div className="min-h-screen bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
       <>
       <Navigation />
       <Hero />
