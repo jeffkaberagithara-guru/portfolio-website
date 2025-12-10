@@ -11,30 +11,30 @@ function Hero() {
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 md:pt-16 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-x-hidden w-full">
-            <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-center w-full">
+        <section id="home" className="min-h-screen flex items-center justify-center px-4 py-8 sm:py-12 md:py-16 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-x-hidden w-full">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 
                 {/* Text Content */}
                 <motion.div 
-                    className="text-center lg:text-left"
+                    className="text-center lg:text-left px-4 md:px-0"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                 >
                     {/* Welcome Badge */}
                     <motion.div
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-4"
+                        className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-4 md:mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                        <span className="text-orange-400 text-sm font-medium">Welcome to my digital space</span>
+                        <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                        <span className="text-orange-400 text-xs md:text-sm font-medium">Welcome to my digital space</span>
                     </motion.div>
 
                     {/* Main Heading */}
                     <motion.h1 
-                        className="text-xl md:text-2xl lg:text-5xl font-black text-white mb-3 leading-tight"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-3 md:mb-4 leading-tight"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
@@ -51,19 +51,19 @@ function Hero() {
 
                     {/* Subheading */}
                     <motion.h2 
-                        className="text-xl md:text-3xl text-gray-300 mb-3 font-semibold"
+                        className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-3 md:mb-4 font-semibold"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
                     >
                         Transforming ideas into{" "}
-                        <span className="text-orange-400 text-xl md:text-3xl font-semibold">digital experiences</span>{" "}
+                        <span className="text-orange-400">digital experiences</span>{" "}
                         that captivate and convert
                     </motion.h2>
 
-                    {/* Description - Made shorter */}
+                    {/* Description */}
                     <motion.p 
-                        className="text-base text-gray-400 mb-4 max-w-2xl leading-relaxed"
+                        className="text-sm md:text-base lg:text-lg text-gray-400 mb-4 md:mb-6 max-w-2xl leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.7 }}
@@ -71,16 +71,16 @@ function Hero() {
                         Creating beautiful, functional digital experiences with clean code and innovative design solutions.
                     </motion.p>
 
-                    {/* CTA Buttons - Made more compact */}
+                    {/* CTA Buttons */}
                     <motion.div 
-                        className="flex flex-col sm:flex-row gap-4 mb-4"
+                        className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-4 md:mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.9 }}
                     >
                         <motion.button 
                             onClick={() => scrollToSection('#projects')}
-                            className="group bg-linear-to-r from-orange-600 to-orange-700 text-white px-5 py-2.5 rounded-full cursor-pointer font-semibold flex items-center gap-2 justify-center hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-100 text-sm"
+                            className="group bg-linear-to-r from-orange-600 to-orange-700 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 rounded-full cursor-pointer font-semibold flex items-center gap-2 justify-center hover:shadow-xl hover:shadow-orange-500/25 transition-all duration-100 text-sm md:text-base"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -89,27 +89,25 @@ function Hero() {
                         </motion.button>
 
                         <a href="/Resume.pdf" download="Resume.pdf" target="_blank" rel="noopener noreferrer">
-
                             <motion.button 
-                                onClick={() => scrollToSection('#contact')}
-                                className="group border border-orange-500/30 text-white px-5 py-2.5 rounded-full cursor-pointer font-semibold flex items-center gap-2 justify-center hover:bg-orange-500/10 hover:border-orange-400 transition-all duration-100 text-sm"
+                                className="group border border-orange-500/30 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 rounded-full cursor-pointer font-semibold flex items-center gap-2 justify-center hover:bg-orange-500/10 hover:border-orange-400 transition-all duration-100 text-sm md:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <FiDownload className="group-hover:scale-110 transition-transform duration-100" />
                                 Download CV
-                                </motion.button>
+                            </motion.button>
                         </a>
                     </motion.div>
 
-                    {/* Social Links - Made more prominent */}
+                    {/* Social Links */}
                     <motion.div 
-                        className="flex justify-center lg:justify-start gap-4 mt-4"
+                        className="flex justify-center lg:justify-start gap-3 md:gap-4 mt-4 md:mt-6"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 1.1 }}
                     >
-                        <span className="text-gray-500 text-sm font-medium self-center hidden sm:block">Follow me:</span>
+                        <span className="text-gray-500 text-xs md:text-sm font-medium self-center">Follow me:</span>
                         {[
                             { icon: FaGithub, href: "https://github.com/jeffkaberagithara-guru", color: "hover:text-orange-400", label: "GitHub" },
                             { icon: FaLinkedin, href: "https://linkedin.com/in/kabera-githara-21067839b", color: "hover:text-orange-500", label: "LinkedIn" },
@@ -120,7 +118,7 @@ function Hero() {
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`text-gray-500 text-xl ${social.color} transition-colors duration-100 relative group`}
+                                className={`text-gray-500 text-lg md:text-xl ${social.color} transition-colors duration-100 relative group`}
                                 whileHover={{ scale: 1.2, y: -2 }}
                                 whileTap={{ scale: 0.9 }}
                                 aria-label={social.label}
@@ -135,18 +133,18 @@ function Hero() {
                     </motion.div>
                 </motion.div>
 
-                {/* Profile Image Section - Made smaller */}
+                {/* Profile Image Section */}
                 <div className="flex flex-col items-center lg:items-end">
-                    {/* Profile Image Container - Even smaller */}
+                    {/* Profile Image Container */}
                     <motion.div 
-                        className="relative mb-4"
+                        className="relative mb-4 md:mb-6"
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                     >
                         <div className="relative">
-                            {/* Main Image Container - Smaller */}
-                            <div className="relative z-10 w-56 h-75 md:w-84 md:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
+                            {/* Main Image Container */}
+                            <div className="relative z-10 w-64 h-80 sm:w-72 sm:h-90 md:w-80 md:h-100 lg:w-96 lg:h-120 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
                                 <img 
                                     src="/4.JPG" 
                                     alt="Jeff Kabera - Full Stack Developer" 
@@ -154,9 +152,9 @@ function Hero() {
                                 />
                             </div>
                             
-                            {/* Floating Elements - Smaller */}
+                            {/* Floating Elements */}
                             <motion.div 
-                                className="absolute -top-2 -left-2 w-12 h-12 bg-orange-500/20 rounded-full blur-lg"
+                                className="absolute -top-3 -left-3 w-12 h-12 md:w-16 md:h-16 bg-orange-500/20 rounded-full blur-lg"
                                 animate={{ 
                                     scale: [1, 1.2, 1],
                                     opacity: [0.3, 0.6, 0.3]
@@ -169,7 +167,7 @@ function Hero() {
                             />
                             
                             <motion.div 
-                                className="absolute -bottom-2 -right-2 w-10 h-10 bg-orange-400/30 rounded-full blur-md"
+                                className="absolute -bottom-3 -right-3 w-10 h-10 md:w-14 md:h-14 bg-orange-400/30 rounded-full blur-md"
                                 animate={{ 
                                     scale: [1.2, 1, 1.2],
                                     opacity: [0.4, 0.7, 0.4]
@@ -187,9 +185,9 @@ function Hero() {
                 </div>
             </div>
 
-            {/* Scroll Indicator - Smaller and higher */}
+            {/* Scroll Indicator */}
             <motion.div 
-                className="absolute bottom-2 left-1/2 lg:left-[50%] transform -translate-x-1/2"
+                className="absolute bottom-4 left-1/2 lg:left-[50%] transform -translate-x-1/2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 1.5 }}
