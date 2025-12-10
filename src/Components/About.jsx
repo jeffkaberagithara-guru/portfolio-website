@@ -23,8 +23,8 @@ function About() {
     ];
 
     return (
-        <section id="about" className="py-20 px-4 bg-linear-to-br from-black via-gray-900 to-orange-900">
-            <div className="max-w-6xl mx-auto">
+        <section id="about" className="py-20 px-4 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4">
                 {/* Section Header */}
                 <motion.div
                     className="text-center mb-16"
@@ -82,7 +82,7 @@ function About() {
                             transition={{ duration: 0.3 }}
                         >
                             <div className="relative">
-                                <div className="relative z-10 w-64 h-80 md:w-80 md:h-96 lg:w-96 lg:h-110 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20">
+                                <div className="relative z-10 w-full max-w-xs h-auto aspect-[3/4] rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto">
                                     <img 
                                         src="/2.JPG" 
                                         alt="Jeff Kabera - Full Stack Developer" 
