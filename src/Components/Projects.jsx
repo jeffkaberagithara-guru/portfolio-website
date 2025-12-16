@@ -30,8 +30,8 @@ const Projects = () => {
       image: "/api/placeholder/600/400",
       technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
       category: "Frontend Focus",
-      github: "https://github.com/yourusername/portfolio",
-      live: "https://jeffkabera.dev",
+      github: "https://github.com/jeffkaberagithara-guru",
+      live: "https://kabera-portfolio.onrender.com",
       featured: true
     },
     {
