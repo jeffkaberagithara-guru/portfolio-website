@@ -5,6 +5,16 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 const Projects = () => {
   const projects = [
     {
+      "title": "ResQ Auto Roadside Assistance Platform",
+      "description": "A digital roadside assistance solution connecting drivers with immediate help. Features real-service request dispatch, service provider management, GPS integration, and emergency assistance coordination for breakdowns, towing, and vehicle recovery.",
+      "image": "/api/placeholder/600/400",
+      "technologies": ["React", "Node.js", "MongoDB", "Express", "Map API"],
+      "category": "Emergency Services",
+      "github": "https://github.com/yourusername/resq-auto",
+      "live": "https://resq-auto.onrender.com",
+      "featured": true
+    },
+    {
       "title": "Artex Solutions Construction Management Platform",
       "description": "A specialized construction industry platform offering project management, client collaboration tools, and service showcases. Features include project portfolio display, service breakdowns, contractor management, and client communication systems tailored for construction workflows.",
       "image": "/api/placeholder/600/400",
