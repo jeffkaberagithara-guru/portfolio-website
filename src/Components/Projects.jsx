@@ -5,14 +5,14 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React frontend, Node.js backend, and MongoDB database. Features user authentication, payment processing, and admin dashboard.",
-      image: "/api/placeholder/600/400",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      category: "Full Stack",
-      github: "https://github.com/yourusername/ecommerce-platform",
-      live: "https://your-ecommerce-demo.netlify.app",
-      featured: true
+      "title": "Artex Solutions Construction Management Platform",
+      "description": "A specialized construction industry platform offering project management, client collaboration tools, and service showcases. Features include project portfolio display, service breakdowns, contractor management, and client communication systems tailored for construction workflows.",
+      "image": "/api/placeholder/600/400",
+      "technologies": ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+      "category": "Business Solutions",
+      "github": "https://github.com/yourusername/artex-solutions",
+      "live": "https://artex-solutions.onrender.com",
+      "featured": true
     },
     {
       "title": "e-phone E-commerce Platform",
