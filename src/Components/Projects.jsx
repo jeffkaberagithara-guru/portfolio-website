@@ -10,7 +10,7 @@ const Projects = () => {
       "image": "/api/placeholder/600/400",
       "technologies": ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       "category": "Business Solutions",
-      "github": "https://github.com/yourusername/artex-solutions",
+      "github": "https://github.com/jeffkaberagithara-guru",
       "live": "https://artex-solutions.onrender.com",
       "featured": true
     },
