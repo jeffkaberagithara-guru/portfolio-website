@@ -40,7 +40,7 @@ const Projects = () => {
       image: "/api/placeholder/600/400",
       technologies: ["Vue.js", "Chart.js", "Weather API", "Geolocation"],
       category: "UI/UX Design",
-      github: "https://github.com/yourusername/weather-app",
+      github: "https://github.com/jeffkaberagithara-guru",
       live: "https://your-weather-app.netlify.app",
       featured: false
     }
