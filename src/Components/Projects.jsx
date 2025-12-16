@@ -15,14 +15,14 @@ const Projects = () => {
       featured: true
     },
     {
-      title: "Task Management SaaS",
-      description: "A collaborative task management application with real-time updates, team workspaces, and advanced project tracking features.",
-      image: "/api/placeholder/600/400",
-      technologies: ["React", "Python", "PostgreSQL", "Socket.io", "Tailwind"],
-      category: "Backend Focus",
-      github: "https://github.com/yourusername/task-manager",
-      live: "https://your-taskapp.vercel.app",
-      featured: true
+      "title": "e-phone E-commerce Platform",
+      "description": "A modern e-commerce website specializing in premium smartphones, featuring product listings, competitive pricing, and services like phone repairs and trade-ins.",
+      "image": "/api/placeholder/600/400",
+      "technologies": ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS"],
+      "category": "Full Stack",
+      "github": "https://github.com/jeffkaberagithara-guru",
+      "live": "https://ephone-website.onrender.com",
+      "featured": true
     },
     {
       title: "Portfolio Website",
