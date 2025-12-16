@@ -82,7 +82,7 @@ function About() {
                             transition={{ duration: 0.3 }}
                         >
                             <div className="relative">
-                                <div className="relative z-10 w-full max-w-xs h-auto aspect-[3/4] rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto">
+                                <div className="relative z-10 w-full max-w-xs h-auto aspect-3/4 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto">
                                     <img 
                                         src="/2.JPG" 
                                         alt="Jeff Kabera - Full Stack Developer" 
