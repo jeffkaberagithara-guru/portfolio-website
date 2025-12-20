@@ -5,55 +5,55 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 const Projects = () => {
   const projects = [
     {
-      "title": "ResQ Auto Roadside Assistance Platform",
-      "description": "A digital roadside assistance solution connecting drivers with immediate help. Features real-service request dispatch, service provider management, GPS integration, and emergency assistance coordination for breakdowns, towing, and vehicle recovery.",
-      "image": "/api/placeholder/600/400",
-      "technologies": ["React", "Node.js", "MongoDB", "Express", "Map API"],
-      "category": "Emergency Services",
-      "github": "https://github.com/yourusername/resq-auto",
-      "live": "https://resq-auto.onrender.com",
-      "featured": true
-    },
-    {
-      "title": "Artex Solutions Construction Management Platform",
-      "description": "A specialized construction industry platform offering project management, client collaboration tools, and service showcases. Features include project portfolio display, service breakdowns, contractor management, and client communication systems tailored for construction workflows.",
-      "image": "/api/placeholder/600/400",
-      "technologies": ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
-      "category": "Business Solutions",
-      "github": "https://github.com/jeffkaberagithara-guru",
-      "live": "https://artex-solutions.onrender.com",
-      "featured": true
-    },
-    {
-      "title": "e-phone E-commerce Platform",
-      "description": "A modern e-commerce website specializing in premium smartphones, featuring product listings, competitive pricing, and services like phone repairs and trade-ins.",
-      "image": "/api/placeholder/600/400",
-      "technologies": ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS"],
-      "category": "Full Stack",
-      "github": "https://github.com/jeffkaberagithara-guru",
-      "live": "https://ephone-website.onrender.com",
-      "featured": true
-    },
-    {
-      title: "Portfolio Website",
-      description: "A responsive portfolio website showcasing modern web development practices with smooth animations and optimized performance.",
-      image: "/api/placeholder/600/400",
-      technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      category: "Frontend Focus",
-      github: "https://github.com/jeffkaberagithara-guru",
-      live: "https://kabera-portfolio.onrender.com",
-      featured: true
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
-      image: "/api/placeholder/600/400",
-      technologies: ["Vue.js", "Chart.js", "Weather API", "Geolocation"],
-      category: "UI/UX Design",
-      github: "https://github.com/jeffkaberagithara-guru",
-      live: "https://your-weather-app.netlify.app",
-      featured: false
-    }
+    title: "Portfolio Website",
+    description: "A responsive portfolio website showcasing modern web development practices with smooth animations and optimized performance.",
+    image: "/10.png", // Changed from "/public/Logo.png" to "/10.png"
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+    category: "Frontend Focus",
+    github: "https://github.com/jeffkaberagithara-guru",
+    live: "https://kabera-portfolio.onrender.com",
+    featured: true
+  },
+  {
+    title: "ResQ Auto Roadside Assistance Platform",
+    description: "A digital roadside assistance solution connecting drivers with immediate help. Features real-service request dispatch, service provider management, GPS integration, and emergency assistance coordination for breakdowns, towing, and vehicle recovery.",
+    image: "/Logo.png", // Changed from "/api/placeholder/600/400" to "/Logo.png"
+    technologies: ["React", "Node.js", "MongoDB", "Express", "Map API"],
+    category: "Emergency Services",
+    github: "https://github.com/jeffkaberagithara-guru",
+    live: "https://resq-auto.onrender.com",
+    featured: true
+  },
+  {
+    title: "Artex Solutions Construction Management Platform",
+    description: "A specialized construction industry platform offering project management, client collaboration tools, and service showcases. Features include project portfolio display, service breakdowns, contractor management, and client communication systems tailored for construction workflows.",
+    image: "/Construction.avif", // Changed from "/api/placeholder/600/400" to "/Construction.avif"
+    technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    category: "Business Solutions",
+    github: "https://github.com/jeffkaberagithara-guru",
+    live: "https://artex-solutions.onrender.com",
+    featured: true
+  },
+  {
+    title: "e-phone E-commerce Platform",
+    description: "A modern e-commerce website specializing in premium smartphones, featuring product listings, competitive pricing, and services like phone repairs and trade-ins.",
+    image: "/Phones.jpg", // Changed from "/api/placeholder/600/400" to "/Phones.jpg"
+    technologies: ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS"],
+    category: "Full Stack",
+    github: "https://github.com/jeffkaberagithara-guru",
+    live: "https://ephone-website.onrender.com",
+    featured: true
+  },
+  {
+    title: "Weather Dashboard",
+    description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
+    image: "/api/placeholder/600/400",
+    technologies: ["Vue.js", "Chart.js", "Weather API", "Geolocation"],
+    category: "UI/UX Design",
+    github: "https://github.com/jeffkaberagithara-guru",
+    live: "https://your-weather-app.netlify.app",
+    featured: false
+  }
   ];
 
   return (
@@ -98,6 +98,11 @@ const Projects = () => {
               <div className="bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-100 hover:transform hover:-translate-y-2 h-full flex flex-col">
                 {/* Project Image */}
                 <div className="h-48 sm:h-56 md:h-64 bg-linear-to-r from-blue-500/20 to-purple-500/20 relative overflow-hidden">
+                  <img 
+                     src={project.image} 
+                     alt={project.title}
+                     className="absolute inset-0 w-full h-full object-cover"
+                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <span className="px-2 md:px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs md:text-sm border border-blue-500/30">
