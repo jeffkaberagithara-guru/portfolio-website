@@ -8,11 +8,10 @@ function Footer() {
     };
 
     const socialLinks = [
-        { icon: FaGithub, href: "https://github.com/yourusername", label: "GitHub" },
-        { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-        { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-        { icon: FaInstagram, href: "https://instagram.com/yourusername", label: "Instagram" },
-        { icon: FaFacebook, href: "https://facebook.com/yourusername", label: "Facebook" }
+        
+         { icon: FaGithub, href: "https://github.com/jeffkaberagithara-guru", color: "hover:text-orange-400", label: "GitHub" },
+         { icon: FaLinkedin, href: "https://linkedin.com/in/kabera-githara-21067839b", color: "hover:text-orange-500", label: "LinkedIn" },
+         { icon: FaTwitter, href: "https://twitter.com/JeffKaberaDev", color: "hover:text-orange-300", label: "Twitter" },
     ];
 
     return (

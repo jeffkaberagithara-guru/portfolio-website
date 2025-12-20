@@ -7,7 +7,7 @@ const Projects = () => {
     {
     title: "Portfolio Website",
     description: "A responsive portfolio website showcasing modern web development practices with smooth animations and optimized performance.",
-    image: "/10.png", // Changed from "/public/Logo.png" to "/10.png"
+    image: "/11.JPG", // Changed from "/public/Logo.png" to "/10.png"
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
     category: "Frontend Focus",
     github: "https://github.com/jeffkaberagithara-guru",
@@ -47,7 +47,7 @@ const Projects = () => {
   {
     title: "Weather Dashboard",
     description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
-    image: "/api/placeholder/600/400",
+    image: "/Weather.jpg",
     technologies: ["Vue.js", "Chart.js", "Weather API", "Geolocation"],
     category: "UI/UX Design",
     github: "https://github.com/jeffkaberagithara-guru",

@@ -56,11 +56,10 @@ function Contact() {
   ];
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/yourusername", label: "GitHub", color: "hover:text-gray-300" },
-    { icon: FaLinkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn", color: "hover:text-blue-400" },
-    { icon: FaTwitter, href: "https://twitter.com/yourusername", label: "Twitter", color: "hover:text-sky-400" },
-    { icon: FaInstagram, href: "https://instagram.com/yourusername", label: "Instagram", color: "hover:text-pink-500" },
-    { icon: FaFacebook, href: "https://facebook.com/yourusername", label: "Facebook", color: "hover:text-blue-600" }
+   
+     { icon: FaGithub, href: "https://github.com/jeffkaberagithara-guru", color: "hover:text-orange-400", label: "GitHub" },
+     { icon: FaLinkedin, href: "https://linkedin.com/in/kabera-githara-21067839b", color: "hover:text-orange-500", label: "LinkedIn" },
+     { icon: FaTwitter, href: "https://twitter.com/JeffKaberaDev", color: "hover:text-orange-300", label: "Twitter" },
   ];
 
   const handleSubmit = async (e) => {
