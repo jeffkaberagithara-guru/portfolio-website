@@ -1,20 +1,60 @@
-<<<<<<< HEAD
-# React + Vite
+# Jeff Kabera — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, fully responsive personal portfolio built with **React 19**, **Vite 7**, **Tailwind CSS v4**, and **Framer Motion**.
 
-Currently, two official plugins are available:
+Live: [kabera-portfolio.onrender.com](https://kabera-portfolio.onrender.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Hero** — animated typewriter roles, floating badges, ambient glow
+- **About** — animated stat counters, profile card
+- **Skills** — categorized skill bars + infinite logo marquee
+- **Projects** — spotlight cards with hover overlays, live demo / code links
+- **Contact** — EmailJS-powered form (no backend) + WhatsApp, email, social links
+- **Performance** — code-split sections, lazy-loaded images (WebP), self-hosted fonts, zero backdrop-blur/filter layers, GPU-composited animations
+- **SEO** — Open Graph + Twitter cards, JSON-LD `Person` schema, `sitemap.xml`, `robots.txt`, canonical URL
+- **Accessibility** — skip-to-content link, visible focus states, `prefers-reduced-motion` support
+- **Robustness** — React error boundary, styled 404 page
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React 19 · Vite 7 · Tailwind CSS v4 · Framer Motion
+- EmailJS (contact form) · react-icons
+- Fonts: Inter + Space Grotesk (self-hosted via Fontsource)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# portfolio-website
->>>>>>> 4619b7c3cd13f4115fb4eebf16f3f4c0d4ee05c1
+## Getting Started
+
+```bash
+npm install
+npm run dev       # start dev server
+npm run build     # production build -> dist/
+npm run preview   # preview the production build
+npm run lint      # run ESLint
+```
+
+## Deployment
+
+Hosted on **Render** (static site). The repo includes:
+
+- `render.yaml` — Render Blueprint (build `npm run build`, publish `dist/`)
+- `public/_headers` — security + caching headers
+- `public/_redirects` — route normalization
+
+Deploy: connect this repo to Render → **New → Blueprint** (or Static Site). Push to `main` auto-deploys.
+
+## Structure
+
+```
+src/
+  Components/    # Hero, About, Skills, Projects, Contact, Typewriter, Counter, ErrorBoundary
+  Layout/        # Navigation, Footer
+  App.jsx        # lazy section loading + idle chunk warming
+public/          # images, favicons, og-image, resume, seo files
+```
+
+## Contact
+
+- Email: jeffkaberagithara@gmail.com
+- GitHub: [jeffkaberagithara-guru](https://github.com/jeffkaberagithara-guru)
+- LinkedIn: [kabera-githara-21067839b](https://linkedin.com/in/kabera-githara-21067839b)
+- Twitter/X: [@JeffKaberaDev](https://twitter.com/JeffKaberaDev)
