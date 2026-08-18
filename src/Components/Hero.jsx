@@ -130,16 +130,16 @@ function Hero() {
                                 <FiArrowRight className="group-hover:translate-x-1.5 transition-transform duration-300" />
                             </motion.button>
 
-                            <a href="/Jeff%20Kabera%20Githara%20Resume.pdf" download="Jeff Kabera Githara Resume.pdf" target="_blank" rel="noopener noreferrer">
-                                <motion.button
-                                    className="group inline-flex items-center justify-center gap-2.5 border border-orange-500/40 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-500/10 hover:border-orange-400 transition-all duration-300 text-base md:text-lg w-full sm:w-auto"
-                                    whileHover={{ scale: 1.04, y: -2 }}
-                                    whileTap={{ scale: 0.97 }}
-                                >
-                                    <FiDownload className="group-hover:-translate-y-0.5 transition-transform duration-300" />
-                                    Download CV
-                                </motion.button>
-                            </a>
+                            <motion.a
+                                href="/Jeff%20Kabera%20Githara%20Resume.pdf"
+                                download="Jeff Kabera Githara Resume.pdf"
+                                className="group inline-flex items-center justify-center gap-2.5 border border-orange-500/40 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-500/10 hover:border-orange-400 transition-all duration-300 text-base md:text-lg w-full sm:w-auto"
+                                whileHover={{ scale: 1.04, y: -2 }}
+                                whileTap={{ scale: 0.97 }}
+                            >
+                                <FiDownload className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+                                Download CV
+                            </motion.a>
                         </motion.div>
 
                         {/* Social Links */}

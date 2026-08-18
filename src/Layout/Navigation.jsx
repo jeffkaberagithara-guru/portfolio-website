@@ -65,7 +65,9 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Animated Logo */}
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label="Back to top"
             className="flex items-center cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -88,7 +90,7 @@ const Navigation = () => {
                 className="relative h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_14px_rgba(249,115,22,0.55)] group-hover:drop-shadow-[0_0_26px_rgba(249,115,22,0.85)] transition-all duration-100"
               />
             </motion.div>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Menu with Elegant Animations */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
@@ -135,8 +137,12 @@ const Navigation = () => {
 
           {/* Animated Mobile Menu Button */}
           <motion.button
+            type="button"
             className="md:hidden text-white p-2 md:p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             whileHover={{ scale: 1.1, rotate: isMobileMenuOpen ? 0 : 90 }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
@@ -167,6 +173,7 @@ const Navigation = () => {
 
         {/* Animated Mobile Menu */}
         <motion.div
+          id="mobile-navigation"
           className={`md:hidden overflow-hidden ${
             isMobileMenuOpen 
               ? 'max-h-96 opacity-100' 

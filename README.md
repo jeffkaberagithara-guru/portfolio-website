@@ -32,6 +32,20 @@ npm run preview   # preview the production build
 npm run lint      # run ESLint
 ```
 
+## Configuration
+
+The contact form supports these optional deployment variables:
+
+```bash
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+```
+
+Copy `.env.example` to `.env.local` for local use and set the same values in Render. EmailJS browser keys are public by design; configure its allowed origins and anti-spam protection in the EmailJS dashboard.
+
+GitHub Actions runs linting and a production build for pushes to `main` and pull requests.
+
 ## Deployment
 
 Hosted on **Render** (static site). The repo includes:

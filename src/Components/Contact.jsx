@@ -17,6 +17,10 @@ import {
 } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
 
+const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_k4r5idp';
+const emailTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_ue3ls0s';
+const emailPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'gl9TrOzdHhAEebG-P';
+
 function Contact() { 
   const [isSending, setIsSending] = useState(false);
   const [sendStatus, setSendStatus] = useState(null);
@@ -41,7 +45,7 @@ function Contact() {
       icon: FiMapPin,
       label: "Location",
       value: "Nairobi, Kenya",
-      href: "#",
+      href: "https://www.google.com/maps/search/?api=1&query=Nairobi%2C+Kenya",
       color: "from-orange-600 to-orange-700"
     },
     {
@@ -75,24 +79,22 @@ function Contact() {
     setIsSending(true);
     setSendStatus(null);
 
-    emailjs.sendForm(
-      'service_k4r5idp',
-      'template_ue3ls0s',
-      formRef.current,
-      'gl9TrOzdHhAEebG-P'
-    )
-    .then((result) => {
-      console.log('Email sent successfully!', result.text);
+    try {
+      await emailjs.sendForm(
+        emailServiceId,
+        emailTemplateId,
+        formRef.current,
+        emailPublicKey,
+      );
       setIsSending(false);
       setSendStatus('success');
       formRef.current.reset();
       setTimeout(() => setSendStatus(null), 5000);
-    }, (error) => {
-      console.log('Failed to send email:', error.text);
+    } catch {
       setIsSending(false);
       setSendStatus('error');
       setTimeout(() => setSendStatus(null), 5000);
-    });
+    }
   };
 
   return (
@@ -193,6 +195,7 @@ function Contact() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className={`p-3.5 bg-black/40 rounded-xl border border-orange-500/15 hover:border-orange-500/40 text-gray-400 text-xl ${social.color} transition-all duration-300`}
                     whileHover={{ scale: 1.12, y: -3 }}
                     whileTap={{ scale: 0.92 }}
@@ -211,7 +214,7 @@ function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-80px" }}
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 bg-black/50 rounded-2xl border border-orange-500/15 p-7 md:p-8">
+            <form ref={formRef} onSubmit={handleSubmit} aria-busy={isSending} className="space-y-6 bg-black/50 rounded-2xl border border-orange-500/15 p-7 md:p-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <motion.div variants={fadeUp(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }}>
                   <label htmlFor="name" className="block text-gray-400 mb-2.5 font-medium">
@@ -224,6 +227,7 @@ function Contact() {
                       id="name"
                       name="name"
                       required
+                      maxLength="100"
                       className={inputClass}
                       placeholder="Enter your name"
                     />
@@ -241,6 +245,7 @@ function Contact() {
                       id="email"
                       name="email"
                       required
+                      maxLength="254"
                       className={inputClass}
                       placeholder="Enter your email"
                     />
@@ -257,6 +262,7 @@ function Contact() {
                   id="subject"
                   name="subject"
                   required
+                  maxLength="150"
                   className={inputClass.replace('pl-12', 'pl-4')}
                   placeholder="What's this about?"
                 />
@@ -273,6 +279,7 @@ function Contact() {
                     name="message"
                     rows="6"
                     required
+                    maxLength="2000"
                     className={`${inputClass} resize-none`}
                     placeholder="Tell me about your project..."
                   />
@@ -285,6 +292,8 @@ function Contact() {
                   initial={{ opacity: 0, scale: 0.9, y: 10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400"
+                  role="status"
+                  aria-live="polite"
                 >
                   <FiCheckCircle className="text-xl" />
                   <span>Message sent successfully! I'll get back to you soon.</span>
@@ -296,6 +305,7 @@ function Contact() {
                   initial={{ opacity: 0, scale: 0.9, y: 10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400"
+                  role="alert"
                 >
                   <span>Failed to send message. Please try again.</span>
                 </motion.div>
