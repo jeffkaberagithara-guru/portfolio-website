@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiDatabase, FiLayout, FiAward, FiMapPin, FiCalendar } from 'react-icons/fi';
+import { FiCode, FiDatabase, FiLayout, FiAward, FiCalendar, FiUsers } from 'react-icons/fi';
+import Counter from './Counter';
 
 function About() {
     const scrollToSection = (sectionId) => {
@@ -10,9 +11,9 @@ function About() {
     };
 
     const stats = [
-        { number: '2+', label: 'Years Experience', icon: FiCalendar },
-        { number: '50+', label: 'Projects Completed', icon: FiAward },
-        { number: '100%', label: 'Client Satisfaction', icon: FiCode }
+        { value: 2, suffix: '+', label: 'Years Experience', icon: FiCalendar },
+        { value: 50, suffix: '+', label: 'Projects Completed', icon: FiAward },
+        { value: 100, suffix: '%', label: 'Client Satisfaction', icon: FiUsers }
     ];
 
     const skills = [
@@ -22,121 +23,141 @@ function About() {
         { name: 'Problem Solving', level: 95 }
     ];
 
+    const highlights = [
+        { icon: FiCode, title: 'Clean Code', desc: 'Writing maintainable and scalable code following best practices' },
+        { icon: FiLayout, title: 'User Focused', desc: 'Designing with the end-user in mind for optimal experience' },
+        { icon: FiDatabase, title: 'Performance', desc: 'Building fast, efficient applications that scale seamlessly' }
+    ];
+
+    const fadeUp = (delay = 0) => ({
+        hidden: { opacity: 0, y: 28 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }
+        }
+    });
+
     return (
-        <section id="about" className="py-20 px-4 bg-linear-to-br from-black via-gray-900 to-orange-900 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-4">
+        <section id="about" className="py-24 px-4 overflow-hidden">
+            <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <motion.div
-                    className="text-center mb-16"
+                    className="text-center mb-20"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-80px" }}
                 >
                     <motion.div
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2.5 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6"
+                        variants={fadeUp(0.15)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-80px" }}
                     >
-                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500" />
+                        </span>
                         <span className="text-orange-400 text-sm font-medium">Get to know me</span>
                     </motion.div>
-                    
-                    <motion.h1 
-                        className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        viewport={{ once: true }}
+
+                    <motion.h2
+                        className="text-4xl md:text-5xl font-black text-white mb-5"
+                        variants={fadeUp(0.25)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-80px" }}
                     >
                         About <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Me</span>
-                    </motion.h1>
-                    
-                    <motion.p 
+                    </motion.h2>
+
+                    <motion.p
                         className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        viewport={{ once: true }}
+                        variants={fadeUp(0.35)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-80px" }}
                     >
                         Passionate developer crafting digital experiences that make a difference
                     </motion.p>
                 </motion.div>
 
                 {/* Main Content */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
                     {/* Left Column - Image & Stats */}
                     <motion.div
                         className="flex flex-col items-center lg:items-start"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-80px" }}
                     >
                         {/* Profile Image */}
-                        <motion.div 
-                            className="relative mb-8"
+                        <motion.div
+                            className="relative w-full max-w-xs mx-auto lg:mx-0 mb-12"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <div className="relative">
-                                <div className="relative z-10 w-full max-w-xs h-auto aspect-3/4 rounded-2xl overflow-hidden border-4 border-orange-500/20 shadow-2xl shadow-orange-500/20 mx-auto">
-                                    <img 
-                                        src="/2.JPG" 
-                                        alt="Jeff Kabera - Full Stack Developer" 
+                            {/* Glow behind */}
+                            <div
+                                className="absolute -inset-5 rounded-[2.5rem]"
+                                style={{
+                                    background:
+                                        "radial-gradient(circle at 35% 20%, rgba(249,115,22,0.28) 0%, rgba(234,88,12,0.10) 45%, rgba(0,0,0,0) 72%)"
+                                }}
+                                aria-hidden="true"
+                            />
+
+                            {/* Frame */}
+                            <div className="relative rounded-[2rem] p-2 bg-black/60 border border-orange-500/30 shadow-2xl shadow-black/50">
+                                <div className="relative rounded-[1.6rem] overflow-hidden aspect-[4/5]">
+                                    <img
+                                        src="/2.webp"
+                                        alt="Jeff Kabera - Full Stack Developer"
                                         className="w-full h-full object-cover"
+                                        loading="lazy"
                                     />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" aria-hidden="true" />
                                 </div>
-                                
-                                {/* Floating Elements */}
-                                <motion.div 
-                                    className="absolute -top-4 -left-4 w-16 h-16 md:w-20 md:h-20 bg-orange-500/20 rounded-full blur-xl"
-                                    animate={{ 
-                                        scale: [1, 1.2, 1],
-                                        opacity: [0.3, 0.6, 0.3]
-                                    }}
-                                    transition={{ 
-                                        duration: 4,
-                                        repeat: Infinity,
-                                        ease: "easeInOut"
-                                    }}
-                                />
-                                
-                                <motion.div 
-                                    className="absolute -bottom-4 -right-4 w-12 h-12 md:w-16 md:h-16 bg-orange-400/30 rounded-full blur-lg"
-                                    animate={{ 
-                                        scale: [1.2, 1, 1.2],
-                                        opacity: [0.4, 0.7, 0.4]
-                                    }}
-                                    transition={{ 
-                                        duration: 3,
-                                        repeat: Infinity,
-                                        ease: "easeInOut",
-                                        delay: 1
-                                    }}
-                                />
                             </div>
+
+                            {/* Floating badge */}
+                            <motion.div
+                                className="absolute -right-4 sm:-right-8 -bottom-6 flex items-center gap-3 px-4 py-3 bg-black/85 border border-orange-500/30 rounded-2xl shadow-xl"
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                <div className="p-2.5 rounded-xl bg-linear-to-br from-orange-500 to-orange-600 text-white">
+                                    <FiCode className="text-xl" />
+                                </div>
+                                <div>
+                                    <p className="text-white font-bold leading-none">Base in</p>
+                                    <p className="text-gray-400 text-xs mt-1">Nairobi, Kenya</p>
+                                </div>
+                            </motion.div>
                         </motion.div>
 
                         {/* Stats */}
-                        <motion.div 
+                        <motion.div
                             className="grid grid-cols-3 gap-4 w-full max-w-md"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            viewport={{ once: true, margin: "-80px" }}
                         >
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="text-center p-3 md:p-4 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100"
+                                    className="text-center p-5 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300"
                                     whileHover={{ scale: 1.05, y: -5 }}
                                 >
-                                    <stat.icon className="text-orange-500 text-xl md:text-2xl mx-auto mb-2" />
-                                    <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
-                                    <div className="text-xs md:text-sm text-gray-400">{stat.label}</div>
+                                    <stat.icon className="text-orange-500 text-2xl mx-auto mb-3" />
+                                    <div className="text-2xl font-bold text-white">
+                                        <Counter value={stat.value} suffix={stat.suffix} />
+                                    </div>
+                                    <div className="text-xs text-gray-400 mt-1 leading-snug">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -144,112 +165,94 @@ function About() {
 
                     {/* Right Column - Content */}
                     <motion.div
-                        className="text-center lg:text-left px-4 md:px-0"
+                        className="text-center lg:text-left"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-80px" }}
                     >
-                        {/* Introduction */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6">
+                        <motion.div variants={fadeUp(0.2)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
                                 Hello! I'm <span className="text-orange-400">Jeff Kabera</span>
-                            </h2>
-                            
-                            <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6 leading-relaxed">
-                                A passionate <span className="text-orange-400 font-medium">Full-Stack Developer</span> and <span className="text-orange-400 font-medium">UI/UX Designer</span> based in Nairobi, Kenya. 
-                                I specialize in creating digital experiences that are not only visually stunning but also 
+                            </h3>
+
+                            <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
+                                A passionate <span className="text-orange-400 font-medium">Full-Stack Developer</span> and <span className="text-orange-400 font-medium">UI/UX Designer</span> based in Nairobi, Kenya.
+                                I specialize in creating digital experiences that are not only visually stunning but also
                                 highly functional and user-centered.
                             </p>
-                            
-                            <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 leading-relaxed">
-                                With expertise spanning both frontend and backend technologies, I bridge the gap between 
-                                design and development. I believe in writing clean, efficient code and creating interfaces 
+
+                            <p className="text-base md:text-lg text-gray-300 mb-10 leading-relaxed">
+                                With expertise spanning both frontend and backend technologies, I bridge the gap between
+                                design and development. I believe in writing clean, efficient code and creating interfaces
                                 that users love to interact with.
                             </p>
                         </motion.div>
 
                         {/* Skills Progress */}
-                        <motion.div
-                            className="mb-6 md:mb-8"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            viewport={{ once: true }}
-                        >
-                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">My Expertise</h3>
-                            <div className="space-y-4">
+                        <motion.div className="mb-12" variants={fadeUp(0.35)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+                            <h4 className="text-xl md:text-2xl font-bold text-white mb-6">My Expertise</h4>
+                            <div className="space-y-5">
                                 {skills.map((skill, index) => (
                                     <motion.div
                                         key={index}
-                                        className="flex items-center justify-between"
                                         initial={{ opacity: 0, x: -20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.6, delay: index * 0.1 }}
-                                        viewport={{ once: true }}
+                                        viewport={{ once: true, margin: "-80px" }}
                                     >
-                                        <span className="text-gray-300 font-medium flex-1 text-left text-sm md:text-base">{skill.name}</span>
-                                        <div className="w-20 md:w-24 bg-gray-700 rounded-full h-2 ml-4">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <span className="text-gray-300 font-medium text-sm md:text-base">{skill.name}</span>
+                                            <span className="text-orange-400 text-sm font-bold">{skill.level}%</span>
+                                        </div>
+                                        <div className="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
                                             <motion.div
-                                                className="h-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600"
+                                                className="h-full rounded-full bg-linear-to-r from-orange-500 to-orange-600"
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: `${skill.level}%` }}
-                                                transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
-                                                viewport={{ once: true }}
+                                                transition={{ duration: 1.1, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                                                viewport={{ once: true, margin: "-80px" }}
                                             />
                                         </div>
-                                        <span className="text-orange-400 text-sm font-bold w-8 ml-2">{skill.level}%</span>
                                     </motion.div>
                                 ))}
                             </div>
                         </motion.div>
 
                         {/* CTA Button */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            viewport={{ once: true }}
-                        >
-                            <motion.button 
+                        <motion.div variants={fadeUp(0.5)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+                            <motion.button
                                 onClick={() => scrollToSection('#contact')}
-                                className="group bg-linear-to-r from-orange-600 to-orange-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full cursor-pointer font-semibold flex items-center gap-3 justify-center hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-100 mx-auto lg:mx-0 text-sm md:text-base"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                className="group inline-flex items-center gap-3 bg-linear-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 text-sm md:text-base"
+                                whileHover={{ scale: 1.04, y: -2 }}
+                                whileTap={{ scale: 0.97 }}
                             >
-                                <FiLayout className="group-hover:scale-110 transition-transform duration-100" />
+                                <FiLayout className="group-hover:rotate-12 transition-transform duration-300" />
                                 Let's Create Something Amazing
                             </motion.button>
                         </motion.div>
                     </motion.div>
                 </div>
 
-                {/* Additional Info */}
+                {/* Highlights */}
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 px-4 md:px-0"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    viewport={{ once: true, margin: "-80px" }}
                 >
-                    {[
-                        { icon: FiCode, title: 'Clean Code', desc: 'Writing maintainable and scalable code following best practices' },
-                        { icon: FiLayout, title: 'User Focused', desc: 'Designing with the end-user in mind for optimal experience' },
-                        { icon: FiDatabase, title: 'Performance', desc: 'Building fast, efficient applications that scale seamlessly' }
-                    ].map((item, index) => (
+                    {highlights.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="text-center p-4 md:p-6 bg-black/30 rounded-2xl border border-orange-500/10 hover:border-orange-500/30 transition-all duration-100 group"
-                            whileHover={{ scale: 1.05, y: -5 }}
+                            className="text-center p-7 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300 group"
+                            whileHover={{ scale: 1.04, y: -6 }}
                         >
-                            <item.icon className="text-orange-500 text-2xl md:text-3xl mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-100" />
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">{item.title}</h4>
-                            <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+                            <div className="p-3 w-fit mx-auto mb-5 rounded-2xl bg-linear-to-br from-orange-500/15 to-orange-600/15 border border-orange-500/25 group-hover:scale-110 group-hover:border-orange-400/50 transition-all duration-300">
+                                <item.icon className="text-orange-500 text-2xl" />
+                            </div>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-2">{item.title}</h4>
+                            <p className="text-gray-400 text-sm md:text-base leading-relaxed">{item.desc}</p>
                         </motion.div>
                     ))}
                 </motion.div>
