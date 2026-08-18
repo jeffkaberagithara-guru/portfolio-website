@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FiCode, 
@@ -68,65 +67,132 @@ const Skills = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  const others = [
+    { name: "REST APIs", icon: FiFeather, color: "text-green-400" },
+    { name: "GitHub", icon: FiCode, color: "text-gray-300" },
+    { name: "Responsive Design", icon: FiLayout, color: "text-blue-400" },
+    { name: "UI/UX Principles", icon: FiFeather, color: "text-purple-400" },
+    { name: "Agile Methodology", icon: FiCode, color: "text-orange-400" },
+    { name: "Problem Solving", icon: FiCode, color: "text-cyan-400" }
+  ];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const marqueeSkills = [
+    { name: "React", icon: SiReact, color: "text-cyan-400" },
+    { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+    { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+    { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
+    { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
+    { name: "Express", icon: SiExpress, color: "text-gray-300" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
+    { name: "Python", icon: SiPython, color: "text-blue-400" },
+    { name: "Figma", icon: SiFigma, color: "text-purple-400" },
+    { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
+    { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
+    { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-500" },
+    { name: "Postman", icon: SiPostman, color: "text-orange-500" },
+    { name: "FastAPI", icon: SiFastapi, color: "text-green-400" },
+    { name: "Render", icon: SiRender, color: "text-blue-300" }
+  ];
+
+  const fadeUp = (delay = 0) => ({
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6
-      }
+      transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }
     }
-  };
+  });
 
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Technical Skills
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <motion.div
+            className="inline-flex items-center gap-2.5 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6"
+            variants={fadeUp(0.15)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500" />
+            </span>
+            <span className="text-orange-400 text-sm font-medium">What I Work With</span>
+          </motion.div>
+
+          <motion.h2
+            className="text-4xl md:text-5xl font-black text-white mb-5"
+            variants={fadeUp(0.25)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            Technical <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Skills</span>
+          </motion.h2>
+
+          <motion.p
+            className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto"
+            variants={fadeUp(0.35)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
             Technologies and tools I use to bring ideas to life
-          </p>
+          </motion.p>
+        </motion.div>
+
+        {/* Tech Logo Marquee */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="marquee-mask mb-20 overflow-hidden"
+          aria-hidden="true"
+        >
+          <div className="marquee-track flex gap-4 w-max">
+            {[...marqueeSkills, ...marqueeSkills].map((skill, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2.5 px-6 py-3 bg-black/40 border border-orange-500/15 rounded-2xl whitespace-nowrap"
+              >
+                <skill.icon className={`text-2xl ${skill.color}`} />
+                <span className="text-gray-300 font-medium">{skill.name}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+          }}
           className="grid lg:grid-cols-3 gap-8"
         >
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
-              variants={itemVariants}
+              variants={fadeUp()}
               className="group"
             >
-              <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-orange-500/20 hover:border-orange-400/30 transition-all duration-100 hover:transform hover:-translate-y-2 h-full">
+              <div className="bg-black/60 rounded-2xl p-8 border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300 hover:-translate-y-2 h-full">
                 {/* Category Header */}
                 <div className="flex items-center gap-4 mb-8">
-                  <div className={`p-3 rounded-2xl bg-linear-to-r ${category.color} group-hover:scale-110 transition-transform duration-100`}>
+                  <div className={`p-3.5 rounded-2xl bg-linear-to-r ${category.color} shadow-lg shadow-orange-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                     <category.icon className="text-2xl text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">{category.title}</h3>
                 </div>
 
                 {/* Skills List */}
@@ -134,31 +200,27 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skillIndex}
-                      className="flex items-center justify-between group"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: skillIndex * 0.08 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      className="group/skill"
                     >
-                      <div className="flex items-center gap-3 flex-1">
-                        <div className={`text-2xl ${skill.color} group-hover:scale-110 transition-transform duration-100`}>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`text-2xl ${skill.color} group-hover/skill:scale-110 transition-transform duration-300`}>
                           <skill.icon />
                         </div>
-                        <span className="text-gray-300 font-medium">{skill.name}</span>
+                        <span className="text-gray-300 font-medium flex-1">{skill.name}</span>
+                        <span className="text-orange-400 text-sm font-bold">{skill.level}%</span>
                       </div>
-                      
-                      {/* Animated Progress Bar */}
-                      <div className="flex items-center gap-3">
-                        <div className="w-20 bg-gray-700 rounded-full h-2">
-                          <motion.div
-                            className="h-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: skillIndex * 0.1 }}
-                            viewport={{ once: true }}
-                          />
-                        </div>
-                        <span className="text-orange-400 text-sm font-bold w-8">
-                          {skill.level}%
-                        </span>
+                      <div className="w-full ml-9 bg-gray-800 rounded-full h-2 overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full bg-linear-to-r from-orange-500 to-orange-600"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                          viewport={{ once: true, margin: "-40px" }}
+                        />
                       </div>
                     </motion.div>
                   ))}
@@ -172,28 +234,25 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-20"
         >
-          <h3 className="text-2xl font-bold text-white text-center mb-8">Other Technologies</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              { name: "REST APIs", icon: FiFeather, color: "text-green-400" },
-              { name: "GitHub", icon: FiCode, color: "text-gray-300" },
-              { name: "Responsive Design", icon: FiLayout, color: "text-blue-400" },
-              { name: "UI/UX Principles", icon: FiFeather, color: "text-purple-400" },
-              { name: "Agile Methodology", icon: FiCode, color: "text-orange-400" },
-              { name: "Problem Solving", icon: FiCode, color: "text-cyan-400" }
-            ].map((skill, index) => (
+          <h3 className="text-2xl font-bold text-white text-center mb-10">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Other</span> Technologies
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+            {others.map((skill, index) => (
               <motion.div
                 key={index}
-                className="flex flex-col items-center p-4 bg-black/30 rounded-xl border border-orange-500/10 hover:border-orange-400/20 transition-all duration-100 group"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
+                className="flex flex-col items-center p-5 bg-black/40 rounded-2xl border border-orange-500/10 hover:border-orange-400/30 transition-all duration-300 group"
+                whileHover={{ scale: 1.06, y: -6 }}
+                whileTap={{ scale: 0.96 }}
               >
-                <skill.icon className={`text-3xl mb-2 ${skill.color} group-hover:scale-110 transition-transform duration-100`} />
-                <span className="text-gray-400 text-sm text-center">{skill.name}</span>
+                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/15 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <skill.icon className={`text-2xl ${skill.color}`} />
+                </div>
+                <span className="text-gray-400 text-sm text-center leading-snug">{skill.name}</span>
               </motion.div>
             ))}
           </div>

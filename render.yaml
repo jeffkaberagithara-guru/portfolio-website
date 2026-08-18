@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jeff-kabera-portfolio
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    domains:
+      - kabera-portfolio.onrender.com
+    envVars:
+      - key: NODE_VERSION
+        value: 22

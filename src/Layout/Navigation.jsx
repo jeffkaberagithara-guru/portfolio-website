@@ -1,26 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+
+const navItems = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' }
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeHover, setActiveHover] = useState(null);
-
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+
+        const scrollPosition = window.scrollY + 120;
+        let current = 'home';
+        for (const item of navItems) {
+          const section = document.querySelector(item.href);
+          if (section && section.offsetTop <= scrollPosition) {
+            current = item.name.toLowerCase();
+          }
+        }
+        setActiveSection(current);
+        ticking = false;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -36,7 +55,7 @@ const Navigation = () => {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-100 ${
         isScrolled 
-          ? 'bg-black/95 backdrop-blur-xl border-b border-orange-500/30 shadow-2xl' 
+          ? 'bg-black shadow-2xl shadow-black/60' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -47,41 +66,28 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-3 md:py-4">
           {/* Animated Logo */}
           <motion.div
-            className="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+            className="flex items-center cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('#home')}
           >
             <motion.div 
-              className="relative"
+              className="relative flex items-center"
               whileHover={{ rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-linear-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/30 transition-all duration-100">
-                <span className="text-white font-bold text-sm md:text-lg">K</span>
-              </div>
-              {/* Pulsing Glow Effect */}
-              <motion.div 
-                className="absolute inset-0 bg-linear-to-br from-orange-400 to-orange-500 rounded-xl blur-md opacity-0 group-hover:opacity-40"
+              {/* Soft ambient glow behind the transparent logo */}
+              <motion.div
+                className="absolute inset-0 bg-orange-500/15 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-100"
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              />
+              <img
+                src="/Logo6-light.png"
+                alt="Kabera logo"
+                className="relative h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_14px_rgba(249,115,22,0.55)] group-hover:drop-shadow-[0_0_26px_rgba(249,115,22,0.85)] transition-all duration-100"
               />
             </motion.div>
-            
-            <div className="flex flex-col">
-              <motion.span 
-                className="text-xl md:text-2xl font-black bg-linear-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent group-hover:from-orange-300 group-hover:to-orange-400 transition-all duration-100"
-                whileHover={{ x: 2 }}
-              >
-                Kabera
-              </motion.span>
-              <motion.span 
-                className="text-xs text-orange-400/80 font-medium tracking-widest group-hover:text-orange-300 transition-colors duration-100"
-                whileHover={{ scale: 1.1 }}
-              >
-                DEV
-              </motion.span>
-            </div>
           </motion.div>
 
           {/* Desktop Menu with Elegant Animations */}
@@ -90,43 +96,38 @@ const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                onHoverStart={() => setActiveHover(item.name)}
-                onHoverEnd={() => setActiveHover(null)}
-                className="text-gray-300 hover:text-white relative py-2 cursor-pointer group"
+                className={`relative px-4 py-2 cursor-pointer group rounded-full ${activeSection === item.name.toLowerCase() ? 'text-orange-400' : 'text-gray-300'}`}
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               >
-                <motion.span 
-                  className="relative z-10 text-base font-semibold tracking-wide group-hover:text-orange-300 transition-colors duration-100"
-                  whileHover={{ scale: 1.05 }}
+                {/* Pill Background */}
+                <div
+                  className={`absolute inset-0 rounded-full border transition-all duration-300 ${
+                    activeSection === item.name.toLowerCase()
+                      ? 'bg-orange-500/15 border-orange-500/40'
+                      : 'bg-transparent border-transparent group-hover:bg-orange-500/10 group-hover:border-orange-500/30'
+                  }`}
+                  aria-hidden="true"
+                />
+
+                {/* Label */}
+                <span
+                  className={`relative z-10 text-base font-semibold tracking-wide transition-all duration-300 group-hover:text-orange-300 group-hover:drop-shadow-[0_0_10px_rgba(249,115,22,0.7)] ${
+                    activeSection === item.name.toLowerCase() ? 'text-orange-400' : ''
+                  }`}
                 >
                   {item.name}
-                </motion.span>
-                
-                {/* Animated Underline with Glow */}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-orange-400 to-orange-500 rounded-full shadow-lg shadow-orange-500/30"
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-                
-                {/* Floating Particles */}
-                <motion.div
-                  className="absolute -top-1 -right-1 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-100"
-                  whileHover={{ 
-                    scale: [0, 1.5, 1],
-                    y: [0, -3, 0],
-                    transition: { duration: 0.6 }
-                  }}
-                />
-                
-                {/* Background Glow Effect */}
-                <motion.div 
-                  className="absolute inset-0 bg-orange-500/10 rounded-lg scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
+                </span>
+
+                {/* Sliding Underline */}
+                <div
+                  className={`absolute bottom-0.5 left-4 right-4 h-[3px] origin-left rounded-full bg-linear-to-r from-orange-400 to-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)] transition-transform duration-300 ease-out ${
+                    activeSection === item.name.toLowerCase() ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                  aria-hidden="true"
                 />
               </motion.button>
             ))}
@@ -173,7 +174,7 @@ const Navigation = () => {
           } transition-all duration-500 ease-out`}
         >
           <motion.div 
-            className="py-3 md:py-4 space-y-2 md:space-y-3 border-t border-orange-500/30 bg-black/90 backdrop-blur-xl rounded-b-2xl"
+            className="py-3 md:py-4 space-y-2 md:space-y-3 border-t border-orange-500/30 bg-black/95 rounded-b-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -182,7 +183,7 @@ const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="w-full text-left text-gray-300 hover:text-white py-2.5 md:py-3 px-4 md:px-6 rounded-xl hover:bg-orange-500/10 transition-all duration-100 flex items-center cursor-pointer group relative overflow-hidden"
+                className={`w-full text-left py-2.5 md:py-3 px-4 md:px-6 rounded-xl transition-all duration-100 flex items-center cursor-pointer group relative overflow-hidden ${activeSection === item.name.toLowerCase() ? 'bg-orange-500/15 text-orange-300' : 'text-gray-300 hover:bg-orange-500/10 hover:text-white'}`}
                 whileHover={{ x: 8, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -204,7 +205,7 @@ const Navigation = () => {
                 
                 {/* Animated Arrow Indicator */}
                 <motion.div
-                  className="relative z-10 w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100"
+                  className={`relative z-10 w-4 h-4 md:w-5 md:h-5 ${activeSection === item.name.toLowerCase() ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                   whileHover={{ x: 3 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -217,7 +218,7 @@ const Navigation = () => {
                 
                 {/* Active Line Indicator */}
                 <motion.div
-                  className="absolute left-0 top-1/2 w-1 h-4 md:h-6 bg-linear-to-b from-orange-400 to-orange-500 rounded-r-full transform -translate-y-1/2 opacity-0 group-hover:opacity-100"
+                  className={`absolute left-0 top-1/2 w-1 h-4 md:h-6 bg-linear-to-b from-orange-400 to-orange-500 rounded-r-full transform -translate-y-1/2 ${activeSection === item.name.toLowerCase() ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                   whileHover={{ scaleY: 1.2 }}
                   transition={{ duration: 0.2 }}
                 />
