@@ -1,28 +1,41 @@
 import { motion } from 'framer-motion';
-import { 
-  FiCode, 
-  FiDatabase, 
-  FiServer, 
+import {
+  FiCode,
+  FiDatabase,
+  FiServer,
   FiLayout,
-  FiFeather 
+  FiFeather,
+  FiSmartphone,
+  FiGlobe
 } from 'react-icons/fi';
 
-import { 
-  SiHtml5, 
-  SiCss3, 
-  SiTypescript, 
-  SiJavascript, 
+import {
+  SiHtml5,
+  SiCss3,
+  SiTypescript,
+  SiJavascript,
   SiPython,
   SiMongodb,
+  SiPostgresql,
+  SiSupabase,
+  SiFirebase,
   SiExpress,
   SiNodedotjs,
   SiReact,
+  SiNextdotjs,
+  SiVuedotjs,
   SiTailwindcss,
   SiBootstrap,
   SiFigma,
   SiPostman,
   SiFastapi,
-  SiRender
+  SiRender,
+  SiVite,
+  SiVercel,
+  SiExpo,
+  SiGit,
+  SiGithub,
+  SiNpm
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -34,10 +47,12 @@ const Skills = () => {
       skills: [
         { name: "HTML5", icon: SiHtml5, level: 95, color: "text-orange-500" },
         { name: "CSS3", icon: SiCss3, level: 90, color: "text-blue-500" },
-        { name: "JavaScript", icon: SiJavascript, level: 88, color: "text-yellow-400" },
-        { name: "TypeScript", icon: SiTypescript, level: 85, color: "text-blue-600" },
-        { name: "React", icon: SiReact, level: 92, color: "text-cyan-400" },
-        { name: "Tailwind CSS", icon: SiTailwindcss, level: 90, color: "text-teal-400" },
+        { name: "JavaScript", icon: SiJavascript, level: 90, color: "text-yellow-400" },
+        { name: "TypeScript", icon: SiTypescript, level: 86, color: "text-blue-600" },
+        { name: "React", icon: SiReact, level: 93, color: "text-cyan-400" },
+        { name: "Next.js", icon: SiNextdotjs, level: 86, color: "text-white" },
+        { name: "Vue.js", icon: SiVuedotjs, level: 80, color: "text-green-500" },
+        { name: "Tailwind CSS", icon: SiTailwindcss, level: 92, color: "text-teal-400" },
         { name: "Bootstrap", icon: SiBootstrap, level: 85, color: "text-purple-500" }
       ]
     },
@@ -50,48 +65,78 @@ const Skills = () => {
         { name: "Express.js", icon: SiExpress, level: 85, color: "text-gray-300" },
         { name: "Python", icon: SiPython, level: 82, color: "text-blue-400" },
         { name: "FastAPI", icon: SiFastapi, level: 80, color: "text-green-400" },
-        { name: "MongoDB", icon: SiMongodb, level: 85, color: "text-green-600" }
+        { name: "REST APIs", icon: FiGlobe, level: 88, color: "text-orange-400" }
       ]
     },
     {
-      title: "Tools & Platforms",
+      title: "Databases & Cloud",
       icon: FiDatabase,
       color: "from-orange-600 to-orange-700",
       skills: [
+        { name: "MongoDB", icon: SiMongodb, level: 86, color: "text-green-600" },
+        { name: "PostgreSQL", icon: SiPostgresql, level: 80, color: "text-sky-500" },
+        { name: "Supabase", icon: SiSupabase, level: 82, color: "text-emerald-500" },
+        { name: "Firebase", icon: SiFirebase, level: 80, color: "text-amber-500" },
+        { name: "Mongoose / ODM", icon: FiDatabase, level: 83, color: "text-green-500" }
+      ]
+    },
+    {
+      title: "Mobile & UI/UX",
+      icon: FiSmartphone,
+      color: "from-amber-500 to-orange-600",
+      skills: [
+        { name: "React Native", icon: SiExpo, level: 80, color: "text-gray-200" },
+        { name: "Expo", icon: SiExpo, level: 80, color: "text-gray-300" },
         { name: "Figma", icon: SiFigma, level: 88, color: "text-purple-400" },
-        { name: "Postman", icon: SiPostman, level: 90, color: "text-orange-500" },
-        { name: "Render", icon: SiRender, level: 85, color: "text-blue-300" },
-        { name: "Git", icon: FiCode, level: 87, color: "text-orange-400" },
-        { name: "VS Code", icon: FiCode, level: 95, color: "text-blue-400" }
+        { name: "UI/UX Principles", icon: FiLayout, level: 87, color: "text-blue-400" },
+        { name: "Framer Motion", icon: FiFeather, level: 85, color: "text-rose-400" }
       ]
     }
   ];
 
-  const others = [
-    { name: "REST APIs", icon: FiFeather, color: "text-green-400" },
-    { name: "GitHub", icon: FiCode, color: "text-gray-300" },
-    { name: "Responsive Design", icon: FiLayout, color: "text-blue-400" },
-    { name: "UI/UX Principles", icon: FiFeather, color: "text-purple-400" },
-    { name: "Agile Methodology", icon: FiCode, color: "text-orange-400" },
-    { name: "Problem Solving", icon: FiCode, color: "text-cyan-400" }
+  const tools = [
+    { name: "Git", icon: SiGit, color: "text-orange-500" },
+    { name: "GitHub", icon: SiGithub, color: "text-gray-300" },
+    { name: "Vite", icon: SiVite, color: "text-yellow-300" },
+    { name: "Vercel", icon: SiVercel, color: "text-gray-200" },
+    { name: "Render", icon: SiRender, color: "text-blue-300" },
+    { name: "Postman", icon: SiPostman, color: "text-orange-500" },
+    { name: "VS Code", icon: FiCode, color: "text-blue-400" },
+    { name: "npm", icon: SiNpm, color: "text-red-400" }
   ];
 
   const marqueeSkills = [
     { name: "React", icon: SiReact, color: "text-cyan-400" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
     { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
     { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
     { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
     { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
     { name: "Express", icon: SiExpress, color: "text-gray-300" },
+    { name: "Supabase", icon: SiSupabase, color: "text-emerald-500" },
+    { name: "Firebase", icon: SiFirebase, color: "text-amber-500" },
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
     { name: "Python", icon: SiPython, color: "text-blue-400" },
     { name: "Figma", icon: SiFigma, color: "text-purple-400" },
-    { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
-    { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
+    { name: "Vue.js", icon: SiVuedotjs, color: "text-green-500" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "text-sky-500" },
+    { name: "Vite", icon: SiVite, color: "text-yellow-300" },
+    { name: "Expo", icon: SiExpo, color: "text-gray-300" },
     { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-500" },
-    { name: "Postman", icon: SiPostman, color: "text-orange-500" },
-    { name: "FastAPI", icon: SiFastapi, color: "text-green-400" },
-    { name: "Render", icon: SiRender, color: "text-blue-300" }
+    { name: "FastAPI", icon: SiFastapi, color: "text-green-400" }
+  ];
+
+  const others = [
+    { name: "REST APIs", icon: FiGlobe, color: "text-green-400" },
+    { name: "Responsive Design", icon: FiLayout, color: "text-blue-400" },
+    { name: "Accessibility", icon: FiFeather, color: "text-orange-400" },
+    { name: "SEO", icon: FiCode, color: "text-emerald-400" },
+    { name: "Agile Methodology", icon: FiCode, color: "text-orange-400" },
+    { name: "Problem Solving", icon: FiCode, color: "text-cyan-400" },
+    { name: "Clean Code", icon: FiCode, color: "text-blue-300" },
+    { name: "Performance", icon: FiSmartphone, color: "text-amber-400" },
+    { name: "shadcn/ui", icon: FiLayout, color: "text-purple-300" },
+    { name: "Web Animations", icon: FiFeather, color: "text-rose-400" }
   ];
 
   const fadeUp = (delay = 0) => ({
@@ -134,7 +179,7 @@ const Skills = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            Technical <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Skills</span>
+            Skills <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">&amp; Expertise</span>
           </motion.h2>
 
           <motion.p
@@ -144,7 +189,7 @@ const Skills = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            Technologies and tools I use to bring ideas to life
+            Languages, frameworks and tools I use to build modern products end to end
           </motion.p>
         </motion.div>
 
@@ -178,7 +223,7 @@ const Skills = () => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
           }}
-          className="grid lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
         >
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
@@ -192,25 +237,25 @@ const Skills = () => {
                   <div className={`p-3.5 rounded-2xl bg-linear-to-r ${category.color} shadow-lg shadow-orange-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                     <category.icon className="text-2xl text-white" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white">{category.title}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white leading-snug">{category.title}</h3>
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skillIndex}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: skillIndex * 0.08 }}
+                      transition={{ duration: 0.5, delay: skillIndex * 0.06 }}
                       viewport={{ once: true, margin: "-40px" }}
                       className="group/skill"
                     >
                       <div className="flex items-center gap-3 mb-2">
-                        <div className={`text-2xl ${skill.color} group-hover/skill:scale-110 transition-transform duration-300`}>
+                        <div className={`text-xl ${skill.color} group-hover/skill:scale-110 transition-transform duration-300`}>
                           <skill.icon />
                         </div>
-                        <span className="text-gray-300 font-medium flex-1">{skill.name}</span>
+                        <span className="text-gray-300 font-medium flex-1 text-sm md:text-base">{skill.name}</span>
                         <span className="text-orange-400 text-sm font-bold">{skill.level}%</span>
                       </div>
                       <div className="w-full ml-9 bg-gray-800 rounded-full h-2 overflow-hidden">
@@ -230,7 +275,7 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        {/* Additional Skills Grid */}
+        {/* Tools Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -239,15 +284,51 @@ const Skills = () => {
           className="mt-20"
         >
           <h3 className="text-2xl font-bold text-white text-center mb-10">
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Other</span> Technologies
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Tools</span> &amp; Platforms
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5">
+            {tools.map((skill, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center p-5 bg-black/40 rounded-2xl border border-orange-500/10 hover:border-orange-400/30 transition-all duration-300 group"
+                whileHover={{ scale: 1.06, y: -6 }}
+                whileTap={{ scale: 0.96 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
+                viewport={{ once: true, margin: "-40px" }}
+              >
+                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/15 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <skill.icon className={`text-2xl ${skill.color}`} />
+                </div>
+                <span className="text-gray-400 text-sm text-center leading-snug">{skill.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Additional Skills Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold text-white text-center mb-10">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Other</span> Strengths
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
             {others.map((skill, index) => (
               <motion.div
                 key={index}
                 className="flex flex-col items-center p-5 bg-black/40 rounded-2xl border border-orange-500/10 hover:border-orange-400/30 transition-all duration-300 group"
                 whileHover={{ scale: 1.06, y: -6 }}
                 whileTap={{ scale: 0.96 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
+                viewport={{ once: true, margin: "-40px" }}
               >
                 <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/15 mb-3 group-hover:scale-110 transition-transform duration-300">
                   <skill.icon className={`text-2xl ${skill.color}`} />
