@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const navItems = [
@@ -16,223 +16,208 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 50);
-
-        const scrollPosition = window.scrollY + 120;
-        let current = 'home';
-        for (const item of navItems) {
-          const section = document.querySelector(item.href);
-          if (section && section.offsetTop <= scrollPosition) {
-            current = item.name.toLowerCase();
-          }
-        }
-        setActiveSection(current);
-        ticking = false;
-      });
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    );
+
+    navItems.forEach(({ href }) => {
+      const el = document.getElementById(href.slice(1));
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  const handleMobileLink = (event, href) => {
+    event.preventDefault();
+    document.body.style.overflow = '';
     setIsMobileMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-100 ${
-        isScrolled 
-          ? 'bg-black shadow-2xl shadow-black/60' 
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-black/70 backdrop-blur-xl border-b border-orange-500/10 shadow-lg shadow-black/40'
+          : 'bg-transparent border-b border-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
-          {/* Animated Logo */}
-          <motion.button
-            type="button"
-            aria-label="Back to top"
-            className="flex items-center cursor-pointer group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('#home')}
+          {/* Logo */}
+          <motion.a
+            href="#home"
+            aria-label="Back to top — Jeff Kabera"
+            className="flex items-center cursor-pointer shrink-0"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => handleMobileLink(e, '#home')}
           >
-            <motion.div 
-              className="relative flex items-center"
-              whileHover={{ rotate: 5 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Soft ambient glow behind the transparent logo */}
-              <motion.div
-                className="absolute inset-0 bg-orange-500/15 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-100"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity }}
-              />
-              <img
-                src="/Logo6-light.png"
-                alt="Kabera logo"
-                className="relative h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_14px_rgba(249,115,22,0.55)] group-hover:drop-shadow-[0_0_26px_rgba(249,115,22,0.85)] transition-all duration-100"
-              />
-            </motion.div>
-          </motion.button>
+            <img
+              src="/Logo6-light.png"
+              alt="Kabera logo"
+              className="h-11 md:h-14 w-auto object-contain drop-shadow-[0_0_14px_rgba(249,115,22,0.55)] transition-[filter] duration-300 hover:drop-shadow-[0_0_26px_rgba(249,115,22,0.85)]"
+            />
+          </motion.a>
 
-          {/* Desktop Menu with Elegant Animations */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className={`relative px-4 py-2 cursor-pointer group rounded-full ${activeSection === item.name.toLowerCase() ? 'text-orange-400' : 'text-gray-300'}`}
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-              >
-                {/* Pill Background */}
-                <div
-                  className={`absolute inset-0 rounded-full border transition-all duration-300 ${
-                    activeSection === item.name.toLowerCase()
-                      ? 'bg-orange-500/15 border-orange-500/40'
-                      : 'bg-transparent border-transparent group-hover:bg-orange-500/10 group-hover:border-orange-500/30'
-                  }`}
-                  aria-hidden="true"
-                />
-
-                {/* Label */}
-                <span
-                  className={`relative z-10 text-base font-semibold tracking-wide transition-all duration-300 group-hover:text-orange-300 group-hover:drop-shadow-[0_0_10px_rgba(249,115,22,0.7)] ${
-                    activeSection === item.name.toLowerCase() ? 'text-orange-400' : ''
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.name.toLowerCase();
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className={`relative px-4 py-2 cursor-pointer group rounded-full ${
+                    isActive ? 'text-orange-400' : 'text-gray-300 hover:text-gray-100'
                   }`}
                 >
-                  {item.name}
-                </span>
-
-                {/* Sliding Underline */}
-                <div
-                  className={`absolute bottom-0.5 left-4 right-4 h-[3px] origin-left rounded-full bg-linear-to-r from-orange-400 to-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)] transition-transform duration-300 ease-out ${
-                    activeSection === item.name.toLowerCase() ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`}
-                  aria-hidden="true"
-                />
-              </motion.button>
-            ))}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-0 rounded-full border transition-all duration-300 ${
+                      isActive
+                        ? 'bg-orange-500/15 border-orange-500/40'
+                        : 'bg-transparent border-transparent group-hover:bg-orange-500/10 group-hover:border-orange-500/30'
+                    }`}
+                  />
+                  <span className="relative z-10 text-base font-semibold tracking-wide">
+                    {item.name}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`absolute bottom-0.5 left-4 right-4 h-[3px] origin-left rounded-full bg-linear-to-r from-orange-400 to-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)] transition-transform duration-300 ease-out ${
+                      isActive
+                        ? 'scale-x-100'
+                        : 'scale-x-0 group-hover:scale-x-100'
+                    }`}
+                  />
+                </motion.a>
+              );
+            })}
           </div>
 
-          {/* Animated Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <motion.button
             type="button"
-            className="md:hidden text-white p-2 md:p-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer group relative overflow-hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white p-2.5 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 cursor-pointer relative overflow-hidden transition-colors duration-300"
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
-            whileHover={{ scale: 1.1, rotate: isMobileMenuOpen ? 0 : 90 }}
             whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
-            {/* Button Glow Effect */}
-            <motion.div 
-              className="absolute inset-0 bg-orange-500/20 rounded-xl scale-0 group-hover:scale-100"
-              transition={{ duration: 0.4 }}
-            />
-            {isMobileMenuOpen ? 
-              <motion.div
-                initial={{ rotate: -90, opacity: 0 }}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={isMobileMenuOpen ? 'close' : 'open'}
+                className="flex items-center justify-center"
+                initial={{ rotate: -45, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                exit={{ rotate: 45, opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <FiX size={20} />
-              </motion.div> : 
-              <motion.div
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <FiMenu size={20} />
-              </motion.div>
-            }
+                {isMobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+              </motion.span>
+            </AnimatePresence>
           </motion.button>
         </div>
 
-        {/* Animated Mobile Menu */}
-        <motion.div
-          id="mobile-navigation"
-          className={`md:hidden overflow-hidden ${
-            isMobileMenuOpen 
-              ? 'max-h-96 opacity-100' 
-              : 'max-h-0 opacity-0'
-          } transition-all duration-500 ease-out`}
-        >
-          <motion.div 
-            className="py-3 md:py-4 space-y-2 md:space-y-3 border-t border-orange-500/30 bg-black/95 rounded-b-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className={`w-full text-left py-2.5 md:py-3 px-4 md:px-6 rounded-xl transition-all duration-100 flex items-center cursor-pointer group relative overflow-hidden ${activeSection === item.name.toLowerCase() ? 'bg-orange-500/15 text-orange-300' : 'text-gray-300 hover:bg-orange-500/10 hover:text-white'}`}
-                whileHover={{ x: 8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                {/* Slide-in Background Effect */}
-                <motion.div 
-                  className="absolute inset-0 bg-linear-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-full group-hover:translate-x-full"
-                  transition={{ duration: 0.6 }}
-                />
-                
-                <motion.span 
-                  className="relative z-10 flex-1 text-base font-medium group-hover:text-orange-300 transition-colors duration-100"
-                  whileHover={{ x: 4 }}
-                >
-                  {item.name}
-                </motion.span>
-                
-                {/* Animated Arrow Indicator */}
-                <motion.div
-                  className={`relative z-10 w-4 h-4 md:w-5 md:h-5 ${activeSection === item.name.toLowerCase() ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                  whileHover={{ x: 3 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div
-                    className="w-1.5 h-1.5 md:w-2 md:h-2 border-r-2 border-t-2 border-orange-400 rotate-45 transform"
-                    animate={{ x: [0, 2, 0] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  />
-                </motion.div>
-                
-                {/* Active Line Indicator */}
-                <motion.div
-                  className={`absolute left-0 top-1/2 w-1 h-4 md:h-6 bg-linear-to-b from-orange-400 to-orange-500 rounded-r-full transform -translate-y-1/2 ${activeSection === item.name.toLowerCase() ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                  whileHover={{ scaleY: 1.2 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </motion.button>
-            ))}
-          </motion.div>
-        </motion.div>
+        {/* Mobile Menu */}
+        <AnimatePresence initial={false}>
+          {isMobileMenuOpen && (
+            <motion.div
+              id="mobile-navigation"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden overflow-hidden"
+            >
+              <div className="pt-3 pb-4 space-y-1.5">
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.name.toLowerCase();
+                  return (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      onClick={(e) => handleMobileLink(e, item.href)}
+                      aria-current={isActive ? 'page' : undefined}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 }}
+                      className={`relative w-full text-left py-3 pl-6 pr-4 rounded-xl transition-all duration-200 flex items-center gap-3 cursor-pointer ${
+                        isActive
+                          ? 'bg-orange-500/15 text-orange-300'
+                          : 'text-gray-300 hover:bg-orange-500/10 hover:text-white'
+                      }`}
+                    >
+                      {isActive && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full bg-linear-to-b from-orange-400 to-orange-500"
+                        />
+                      )}
+                      <span className="flex-1 text-base font-medium">{item.name}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`w-1.5 h-1.5 border-r-2 border-t-2 border-orange-400 rotate-45 transition-opacity duration-200 ${
+                          isActive ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );
