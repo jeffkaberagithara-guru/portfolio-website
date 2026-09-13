@@ -167,15 +167,15 @@ function Contact() {
                   href={info.href}
                   target={info.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-5 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300 group cursor-pointer"
+                  className="flex items-center gap-4 p-4 sm:p-5 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300 group cursor-pointer"
                   whileHover={{ x: 6 }}
                   variants={fadeUp(index * 0.08)}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-40px" }}
                 >
-                  <div className={`p-3.5 rounded-xl bg-linear-to-r ${info.color} shadow-lg shadow-orange-500/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300`}>
-                    <info.icon className="text-white text-xl" />
+                  <div className={`p-3 sm:p-3.5 rounded-xl bg-linear-to-r ${info.color} shadow-lg shadow-orange-500/20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300`}>
+                    <info.icon className="text-white text-lg sm:text-xl" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-gray-400 text-sm">{info.label}</p>
@@ -228,6 +228,7 @@ function Contact() {
                       name="name"
                       required
                       maxLength="100"
+                      autoComplete="name"
                       className={inputClass}
                       placeholder="Enter your name"
                     />
@@ -246,6 +247,7 @@ function Contact() {
                       name="email"
                       required
                       maxLength="254"
+                      autoComplete="email"
                       className={inputClass}
                       placeholder="Enter your email"
                     />
