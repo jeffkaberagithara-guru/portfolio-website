@@ -1,5 +1,8 @@
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -8,25 +11,26 @@ body {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.015em;
 }
 
 section[id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 5.5rem;
 }
 
 :focus-visible {
   outline: 2px solid #f97316;
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: 4px;
 }
 
-section[id]:not(#home) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1000px;
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -35,8 +39,8 @@ section[id]:not(#home) {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
 }
 
 ::-webkit-scrollbar-track {
@@ -44,13 +48,17 @@ section[id]:not(#home) {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f97316, #c2410c);
+  background: linear-gradient(to bottom, #d4d4d4, #a3a3a3);
   border-radius: 999px;
   border: 2px solid #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #fb923c, #ea580c);
+  background: linear-gradient(to bottom, #f97316, #ea580c);
+}
+
+::-webkit-scrollbar-corner {
+  background: #0a0a0a;
 }
 
 @keyframes marquee {
