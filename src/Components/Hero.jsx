@@ -214,31 +214,31 @@ function Hero() {
 
                             {/* Floating Badge - Experience */}
                             <motion.div
-                                className="absolute left-1 sm:-left-6 top-8 flex items-center gap-2.5 px-4 py-3 bg-black/85 border border-orange-500/30 rounded-xl shadow-xl"
+                                className="absolute -left-1 sm:-left-6 top-6 sm:top-8 flex items-center gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 bg-black/85 border border-orange-500/30 rounded-xl shadow-xl"
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             >
-                                <div className="p-2.5 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30">
-                                    <FiAward className="text-lg" />
+                                <div className="p-2 sm:p-2.5 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30">
+                                    <FiAward className="text-base sm:text-lg" />
                                 </div>
                                 <div>
-                                    <p className="text-white font-bold text-base leading-none">2+ Years</p>
-                                    <p className="text-gray-400 text-xs mt-1">Experience</p>
+                                    <p className="text-white font-bold text-sm sm:text-base leading-none">2+ Years</p>
+                                    <p className="text-gray-400 text-[10px] sm:text-xs mt-1">Experience</p>
                                 </div>
                             </motion.div>
 
                             {/* Floating Badge - Projects */}
                             <motion.div
-                                className="absolute right-1 sm:-right-6 bottom-16 flex items-center gap-2.5 px-4 py-3 bg-black/85 border border-orange-500/30 rounded-xl shadow-xl"
+                                className="absolute -right-1 sm:-right-6 bottom-20 sm:bottom-16 flex items-center gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 bg-black/85 border border-orange-500/30 rounded-xl shadow-xl"
                                 animate={{ y: [0, 10, 0] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                             >
-                                <div className="p-2.5 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30">
-                                    <FiLayers className="text-lg" />
+                                <div className="p-2 sm:p-2.5 rounded-lg bg-linear-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30">
+                                    <FiLayers className="text-base sm:text-lg" />
                                 </div>
                                 <div>
-                                    <p className="text-white font-bold text-base leading-none">50+ Projects</p>
-                                    <p className="text-gray-400 text-xs mt-1">Delivered</p>
+                                    <p className="text-white font-bold text-sm sm:text-base leading-none">40+ Projects</p>
+                                    <p className="text-gray-400 text-[10px] sm:text-xs mt-1">Repositories</p>
                                 </div>
                             </motion.div>
                         </div>
