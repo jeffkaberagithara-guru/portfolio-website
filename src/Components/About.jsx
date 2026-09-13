@@ -12,7 +12,7 @@ function About() {
 
     const stats = [
         { value: 2, suffix: '+', label: 'Years Experience', icon: FiCalendar },
-        { value: 50, suffix: '+', label: 'Projects Completed', icon: FiAward },
+        { value: 40, suffix: '+', label: 'Projects & Repositories', icon: FiAward },
         { value: 100, suffix: '%', label: 'Client Satisfaction', icon: FiUsers }
     ];
 
@@ -141,7 +141,7 @@ function About() {
 
                         {/* Stats */}
                         <motion.div
-                            className="grid grid-cols-3 gap-4 w-full max-w-md"
+                            className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-md"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
@@ -150,14 +150,14 @@ function About() {
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="text-center p-5 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300"
+                                    className="text-center p-4 sm:p-5 bg-black/40 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-all duration-300"
                                     whileHover={{ scale: 1.05, y: -5 }}
                                 >
-                                    <stat.icon className="text-orange-500 text-2xl mx-auto mb-3" />
-                                    <div className="text-2xl font-bold text-white">
+                                    <stat.icon className="text-orange-500 text-xl sm:text-2xl mx-auto mb-3" />
+                                    <div className="text-lg sm:text-2xl font-bold text-white">
                                         <Counter value={stat.value} suffix={stat.suffix} />
                                     </div>
-                                    <div className="text-xs text-gray-400 mt-1 leading-snug">{stat.label}</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400 mt-1 leading-snug">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
